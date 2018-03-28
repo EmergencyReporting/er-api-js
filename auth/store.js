@@ -11,7 +11,7 @@ const updateStoreInfo = auth => {
         newAuthInfo.goodUntil = Date.now() + ((auth.expires_in - 300) * 1000);
     }
 
-    Object.assign(authInfo, auth, newAuthInfo);
+    authInfo = Object.assign({}, auth, newAuthInfo);
 
     return authInfo.access_token;
 };
