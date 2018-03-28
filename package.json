@@ -1,6 +1,6 @@
 {
-  "name": "er-api-js",
-  "version": "1.0.0",
+  "name": "@ercorp/er-api-js",
+  "version": "0.1.0",
   "description": "",
   "main": "index.js",
   "scripts": {
