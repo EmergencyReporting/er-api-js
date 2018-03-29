@@ -1,11 +1,17 @@
 const axios = require('axios');
 
-const env = {
-    AUTH: 'https://auth.emergencyreporting.com'
+let env = {
+    url: 'https://auth.emergencyreporting.com'
+};
+
+const setEnv = (opts) => {
+    env = {
+        ...opts
+    };
 };
 
 const refreshAuthorization = (refresh_token, client_id, client_secret) => axios({
-    url: `${env.AUTH}/Token.php`,
+    url: `${env.url}/Token.php`,
     method: 'post',
     data: {
         grant_type: 'refresh_token',
@@ -16,7 +22,7 @@ const refreshAuthorization = (refresh_token, client_id, client_secret) => axios(
 });
 
 const authorizePassword = (username, password, client_id, client_secret) => axios({
-    url: `${env.AUTH}/Token.php`,
+    url: `${env.url}/Token.php`,
     method: 'post',
     data: {
         grant_type: 'password',
@@ -29,5 +35,6 @@ const authorizePassword = (username, password, client_id, client_secret) => axio
 
 module.exports = {
     refreshAuthorization,
-    authorizePassword
+    authorizePassword,
+    setEnv
 }

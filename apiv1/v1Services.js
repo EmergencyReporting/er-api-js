@@ -1,11 +1,18 @@
 const axios = require('axios');
-const { getAccessToken } = require('../auth/store');
-const env = {
-    API: 'https://api.emergencyreporting.com'
+const {getAccessToken} = require('../auth/store');
+
+let env = {
+    url: 'https://api.emergencyreporting.com'
+};
+
+const setEnv = (opts) => {
+    env = {
+        ...opts
+    };
 };
 
 const getMyUser = () => getAccessToken().then(accessToken => axios({
-    url: `${env.API}/V1/users/me`,
+    url: `${env.url}/V1/users/me`,
     method: 'get',
     headers: {
         Authorization: accessToken
@@ -19,7 +26,7 @@ const getMyUser = () => getAccessToken().then(accessToken => axios({
  * https://api.emergencyreporting.com/v1/docs/index.html#api-Users-GetUsers
  */
 const getUsers = (params) => getAccessToken().then(accessToken => axios({
-    url: `${env.API}/V1/users/`,
+    url: `${env.url}/V1/users/`,
     method: 'get',
     headers: {
         Authorization: accessToken
@@ -28,7 +35,7 @@ const getUsers = (params) => getAccessToken().then(accessToken => axios({
 }).then(response => response.data));
 
 const getUser = (userID, params) => getAccessToken().then(accessToken => axios({
-    url: `${env.API}/V1/users/${userID}`,
+    url: `${env.url}/V1/users/${userID}`,
     method: 'get',
     headers: {
         Authorization: accessToken
@@ -39,5 +46,6 @@ const getUser = (userID, params) => getAccessToken().then(accessToken => axios({
 module.exports = {
     getMyUser,
     getUsers,
-    getUser
+    getUser,
+    setEnv
 };
