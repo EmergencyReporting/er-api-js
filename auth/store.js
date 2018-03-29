@@ -1,12 +1,14 @@
 const Promise = require('bluebird');
-const { refreshAuthorization, authorizePassword } = require('./authServices');
+const {refreshAuthorization, authorizePassword} = require('./authServices');
 
 let authInfo = {};
 
 const getAuth = () => authInfo;
 
 const updateStoreInfo = auth => {
-    let newAuthInfo = {};
+    let newAuthInfo = {
+        ...authInfo
+    };
     if (auth.expires_in) {
         newAuthInfo.goodUntil = Date.now() + ((auth.expires_in - 300) * 1000);
     }
