@@ -4,10 +4,8 @@ let env = {
     url: 'https://auth.emergencyreporting.com'
 };
 
-const setEnv = (opts) => {
-    env = {
-        ...opts
-    };
+const setAuthEnv = (opts) => {
+    env = Object.assign({}, env, opts);
 };
 
 const refreshAuthorization = (refresh_token, client_id, client_secret) => axios({
@@ -36,5 +34,5 @@ const authorizePassword = (username, password, client_id, client_secret) => axio
 module.exports = {
     refreshAuthorization,
     authorizePassword,
-    setEnv
+    setAuthEnv
 }

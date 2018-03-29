@@ -5,19 +5,22 @@ let env = {
     url: 'https://api.emergencyreporting.com'
 };
 
-const setEnv = (opts) => {
-    env = {
-        ...opts
-    };
+const setAPIv1Env = (opts) => {
+    env = Object.assign({}, env, opts);
 };
 
-const getMyUser = () => getAccessToken().then(accessToken => axios({
+const getMyUser = () => getAccessToken()
+    .then(accessToken => axios({
     url: `${env.url}/V1/users/me`,
     method: 'get',
     headers: {
         Authorization: accessToken
     }
-}).then(response => response.data));
+}).then(response => response.data))
+    .then(result => {
+        console.log(`URL: ${JSON.stringify(env)}`);
+        return result;
+    });
 
 /**
  * Supported params include
@@ -47,5 +50,5 @@ module.exports = {
     getMyUser,
     getUsers,
     getUser,
-    setEnv
+    setAPIv1Env
 };
