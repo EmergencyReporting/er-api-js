@@ -1,5 +1,8 @@
 const axios = require('axios');
 
+// defaulting timeout to 30 seconds
+axios.defaults.timeout = 30000;
+
 let env = {
     url: 'https://auth.emergencyreporting.com'
 };
