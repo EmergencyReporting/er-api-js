@@ -1,7 +1,7 @@
 {
   "name": "@ercorp/er-api-js",
   "version": "0.3.0",
-  "description": "",
+  "description": "Emergency Reporting Auth and API client library.",
   "repository": {
     "type": "git",
     "url": "https://github.com/EmergencyReporting/er-api-js.git"
