@@ -20,7 +20,7 @@ const refreshAuthorization = (refresh_token, client_id, client_secret) => axios(
         client_secret,
         refresh_token
     }
-});
+}).then(response => response.data);
 
 const authorizePassword = (username, password, client_id, client_secret) => axios({
     url: `${env.url}/Token.php`,

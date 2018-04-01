@@ -7,13 +7,15 @@ const getAuth = () => authInfo;
 
 const updateStoreInfo = auth => {
     let newAuthInfo = {
-        ...authInfo
+        ...auth
     };
-    if (auth.expires_in) {
-        newAuthInfo.goodUntil = Date.now() + ((auth.expires_in - 300) * 1000);
+    if (newAuthInfo.expires_in) {
+        newAuthInfo.goodUntil = newAuthInfo.goodUntil
+            ? newAuthInfo.goodUntil
+            : Date.now() + ((newAuthInfo.expires_in - 300) * 1000);
     }
 
-    authInfo = Object.assign({}, auth, newAuthInfo);
+    authInfo = Object.assign({}, authInfo, newAuthInfo);
 
     return authInfo.access_token;
 };
