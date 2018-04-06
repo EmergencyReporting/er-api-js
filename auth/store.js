@@ -5,6 +5,14 @@ let authInfo = {};
 
 const getAuth = () => authInfo;
 
+const authUpdateListeners = [];
+
+const addAuthUpdateListener = updateFn => {
+    authUpdateListeners.push(updateFn);
+};
+
+const onUpdateAuth = newAuthInfo => Promise.all(authUpdateListeners.map(fn => fn(newAuthInfo)));
+
 const updateStoreInfo = auth => {
     let newAuthInfo = {
         ...auth
@@ -17,7 +25,7 @@ const updateStoreInfo = auth => {
 
     authInfo = Object.assign({}, authInfo, newAuthInfo);
 
-    return authInfo.access_token;
+    return onUpdateAuth(authInfo).then(() => authInfo.access_token).catch(() => authInfo.access_token);
 };
 
 const getAccessToken = () => {
@@ -40,5 +48,6 @@ const getAccessToken = () => {
 module.exports = {
     getAuth,
     getAccessToken,
-    updateStoreInfo
+    updateStoreInfo,
+    addAuthUpdateListener
 };
