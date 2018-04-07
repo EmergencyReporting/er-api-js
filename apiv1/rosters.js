@@ -1,4 +1,4 @@
-const {erApiGetFunctionWithParams, erApiPostWithParams, erApiDeleteWithParams} = require('../apiutil');
+const {erApiGetV1WithParams, erApiPostWithParams, erApiDeleteWithParams} = require('../apiutil');
 
 module.exports = {
     createRoster: (rosterName, defaultStartTime, defaultEndTime, ...params) => erApiPostWithParams('/V1/rosters')({

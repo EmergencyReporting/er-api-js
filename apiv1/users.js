@@ -1,7 +1,7 @@
-const {erApiGetFunctionWithParams} = require('../apiutil');
+const {erApiGetV1WithParams} = require('../apiutil');
 
 module.exports = {
-    getMyUser: erApiGetFunctionWithParams('/V1/users/me'),
-    getUsers: erApiGetFunctionWithParams('/V1/users'),
-    getUser: (userID, params) => (erApiGetFunctionWithParams(`/V1/users/${userID}`)(params))
+    getMyUser: erApiGetV1WithParams('/V1/users/me'),
+    getUsers: erApiGetV1WithParams('/V1/users'),
+    getUser: (userID, params) => (erApiGetV1WithParams(`/V1/users/${userID}`)(params))
 };

@@ -3,16 +3,8 @@ const axios = require('axios');
 // defaulting timeout to 30 seconds
 axios.defaults.timeout = 30000;
 
-let env = {
-    url: 'https://auth.emergencyreporting.com'
-};
-
-const setAuthEnv = (opts) => {
-    env = Object.assign({}, env, opts);
-};
-
-const refreshAuthorization = (refresh_token, client_id, client_secret) => axios({
-    url: `${env.url}/Token.php`,
+const refreshAuthorization = (baseUrl, refresh_token, client_id, client_secret) => axios({
+    url: `${baseUrl}/Token.php`,
     method: 'post',
     data: {
         grant_type: 'refresh_token',
@@ -22,8 +14,8 @@ const refreshAuthorization = (refresh_token, client_id, client_secret) => axios(
     }
 }).then(response => response.data);
 
-const authorizePassword = (username, password, client_id, client_secret) => axios({
-    url: `${env.url}/Token.php`,
+const authorizePassword = (baseUrl, username, password, client_id, client_secret) => axios({
+    url: `${baseUrl}/Token.php`,
     method: 'post',
     data: {
         grant_type: 'password',
@@ -36,6 +28,5 @@ const authorizePassword = (username, password, client_id, client_secret) => axio
 
 module.exports = {
     refreshAuthorization,
-    authorizePassword,
-    setAuthEnv
+    authorizePassword
 }

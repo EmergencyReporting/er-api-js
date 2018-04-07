@@ -1,13 +1,12 @@
 const axios = require('axios');
-const {getAccessToken} = require('./auth/store');
-const {getAPIEnv} = require('./env');
+const {getAccessToken, getApiBaseUrl} = require('./auth/store');
 
 // defaulting timeout to 30 seconds
 axios.defaults.timeout = 30000;
 
 module.exports = {
     erApiPostWithParams: (uriPart) => (data => getAccessToken().then(accessToken => axios({
-        url: `${getAPIEnv().url}${uriPart}`,
+        url: `${getApiBaseUrl()}${uriPart}`,
         method: 'post',
         headers: {
             Authorization: accessToken
@@ -15,8 +14,23 @@ module.exports = {
         data
     }).then(response => response.data))),
 
-    erApiGetFunctionWithParams: (uriPart) => (params => getAccessToken().then(accessToken => axios({
-        url: `${getAPIEnv().url}${uriPart}`,
+    erApiGetV1WithParams: (uriPart) => (p => getAccessToken().then(accessToken => {
+        let params = p;
+        let headers = {
+            Authorization: accessToken
+        };
+
+        if (params && params.rowVersion) {
+            headers.Etag = params.rowVersion;
+            params = Object.assign({}, params);
+            delete params.rowVersion;
+        }
+
+        return axios({url: `${getApiBaseUrl()}${uriPart}`, method: 'get', headers, params}).then(response => response.data)
+    })),
+
+    erApiGetV2WithParams: (uriPart) => (params => getAccessToken().then(accessToken => axios({
+        url: `${getApiBaseUrl()}${uriPart}`,
         method: 'get',
         headers: {
             Authorization: accessToken
@@ -26,7 +40,7 @@ module.exports = {
 
     erApiDelete: uriPart => getAccessToken().then(accessToken => axios({
         method: 'delete',
-        url: `${getAPIEnv().url}${uriPart}`,
+        url: `${getApiBaseUrl()}${uriPart}`,
         headers: {
             Authorization: accessToken
         }

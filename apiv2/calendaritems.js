@@ -1,6 +1,6 @@
-const {erApiGetFunctionWithParams} = require('../apiutil');
+const {erApiGetV2WithParams} = require('../apiutil');
 
 module.exports = {
-    getCalendarItems: erApiGetFunctionWithParams('/V2/calendaritems'),
-    getCalendarItem: (calendarItemID, params) => (erApiGetFunctionWithParams(`/V2/calendaritems/${calendarItemID}`)(params))
+    getCalendarItems: erApiGetV2WithParams('/V2/calendaritems'),
+    getCalendarItem: (calendarItemID, params) => (erApiGetV2WithParams(`/V2/calendaritems/${calendarItemID}`)(params))
 };

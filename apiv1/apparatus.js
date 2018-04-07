@@ -1,5 +1,5 @@
-const {erApiGetFunctionWithParams} = require('../apiutil');
+const {erApiGetV1WithParams} = require('../apiutil');
 
 module.exports = {
-    getApparatuses: erApiGetFunctionWithParams('/V1/apparatuses')
+    getApparatuses: erApiGetV1WithParams('/V1/apparatuses')
 };

@@ -1,6 +1,6 @@
-const {erApiGetFunctionWithParams} = require('../apiutil');
+const {erApiGetV2WithParams} = require('../apiutil');
 
 module.exports = {
-    getDailyLogs: erApiGetFunctionWithParams('/V2/dailylog'),
-    getDailyLog: (dailyLogID, params) => (erApiGetFunctionWithParams(`/V2/dailylog/${dailyLogID}`)(params))
+    getDailyLogs: erApiGetV2WithParams('/V2/dailylog'),
+    getDailyLog: (dailyLogID, params) => (erApiGetV2WithParams(`/V2/dailylog/${dailyLogID}`)(params))
 };

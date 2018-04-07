@@ -1,15 +1,12 @@
 const Promise = require('bluebird');
 const {refreshAuthorization, authorizePassword} = require('./authServices');
 
-let authInfo = {};
-
-const getAuth = () => authInfo;
+let authInfo = {
+    authUrl: 'https://auth.emergencyreporting.com',
+    apiUrl: 'https://api.emergencyreporting.com'
+};
 
 const authUpdateListeners = [];
-
-const addAuthUpdateListener = updateFn => {
-    authUpdateListeners.push(updateFn);
-};
 
 const onUpdateAuth = newAuthInfo => Promise.all(authUpdateListeners.map(fn => fn(newAuthInfo)));
 
@@ -35,19 +32,22 @@ const getAccessToken = () => {
     }
 
     if (authInfo.refresh_token) {
-        return refreshAuthorization(authInfo.refresh_token, authInfo.client_id, authInfo.client_secret).then(authResult => updateStoreInfo(authResult));
+        return refreshAuthorization(authInfo.authUrl, authInfo.refresh_token, authInfo.client_id, authInfo.client_secret).then(authResult => updateStoreInfo(authResult));
     }
 
     if (authInfo.username && authInfo.password) {
-        return authorizePassword(authInfo.username, authInfo.password, authInfo.client_id, authInfo.client_secret).then(authResult => updateStoreInfo(authResult));
+        return authorizePassword(authInfo.authUrl, authInfo.username, authInfo.password, authInfo.client_id, authInfo.client_secret).then(authResult => updateStoreInfo(authResult));
     }
 
     return Promise.reject('Invalid auth info');
 };
 
 module.exports = {
-    getAuth,
+    getAuth: () => authInfo,
+    getApiBaseUrl: () => authInfo.apiUrl,
+    addAuthUpdateListener: updateFn => {
+        authUpdateListeners.push(updateFn);
+    },
     getAccessToken,
-    updateStoreInfo,
-    addAuthUpdateListener
+    updateStoreInfo
 };
