@@ -4,15 +4,32 @@ const {getAccessToken, getApiBaseUrl} = require('./auth/store');
 // defaulting timeout to 30 seconds
 axios.defaults.timeout = 30000;
 
+const missingRequiredFields = (obj, requiredFieldNames = []) => requiredFieldNames.reduce((missingReqs, req) => {
+    if (typeof obj[req] === 'undefined') {
+        missingReqs.push(req);
+    }
+    return missingReqs;
+}, []);
+
+const verifyRequired = (obj, requiredFields = []) => {
+    const missingRequiredFields = missingRequiredFields(obj, requiredFields);
+
+    if (!missingRequiredFields.length) {
+        return Promise.resolve(obj);
+    } else {
+        return Promise.reject(`Missing required fields: ${missingRequiredFields.join(',')}`);
+    }
+};
+
 module.exports = {
-    erApiPostWithParams: (uriPart) => (data => getAccessToken().then(accessToken => axios({
+    erApiPostWithParams: (uriPart, requiredFields = []) => (data => verifyRequired(data, requiredFields).then(data => getAccessToken().then(accessToken => axios({
         url: `${getApiBaseUrl()}${uriPart}`,
         method: 'post',
         headers: {
             Authorization: accessToken
         },
         data
-    }).then(response => response.data))),
+    }).then(response => response.data)))),
 
     erApiGetV1WithParams: (uriPart) => (p => getAccessToken().then(accessToken => {
         let params = p;

@@ -10,5 +10,6 @@ module.exports = {
     getApparatusCrew: (departmentApparatusID, crewID, params) => (erApiGetV2WithParams(`/V2/apparatus/${departmentApparatusID}/crews/${crewID}`)(params)),
     getAllApparatusMaintenances: erApiGetV2WithParams('/V2/apparatus/maintenance'),
     getApparatusMaintenances: (departmentApparatusID, params) => (erApiGetV2WithParams(`/V2/apparatus/${departmentApparatusID}/maintenance`)(params)),
-    getApparatusMaintenance: (departmentApparatusID, maintenanceID, params) => (erApiGetV2WithParams(`/V2/apparatus/${departmentApparatusID}/maintenance/${maintenanceID}`)(params))
+    getApparatusMaintenance: (departmentApparatusID, maintenanceID, params) => (erApiGetV2WithParams(`/V2/apparatus/${departmentApparatusID}/maintenance/${maintenanceID}`)(params)),
+    createApparatusMaintenance: (departmentApparatusID, maintenanceInfo) => erApiPostWithParams(`/V2/apparatus/${departmentApparatusID}/maintenance`, [])(maintenanceInfo)
 };

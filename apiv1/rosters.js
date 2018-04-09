@@ -1,29 +1,9 @@
 const {erApiGetV1WithParams, erApiPostWithParams, erApiDeleteWithParams} = require('../apiutil');
 
 module.exports = {
-    createRoster: (rosterName, defaultStartTime, defaultEndTime, ...params) => erApiPostWithParams('/V1/rosters')({
-        rosterName,
-        defaultStartTime,
-        defaultEndTime,
-        ...params
-    }),
-
-    createRosterStation: (rosterId, stationID, ...params) => erApiPostWithParams(`/V1/rosters/${rosterId}/stations`)({
-        stationID,
-        ...params
-    }),
-    createRosterApparatus: (rosterId, rosterStationID, departmentApparatusID, ...params) => erApiPostWithParams(`/V1/rosters/${rosterId}/apparatuses`)({
-        departmentApparatusID,
-        rosterStationID,
-        ...params
-    }),
-    createRosterPersonnel: (rosterId, rosterApparatusID, rosterStationID, userID, beginTime, endTime, ...params) => erApiPostWithParams(`/V1/rosters/${rosterId}/personnel`)({
-        rosterApparatusID,
-        rosterStationID,
-        userID,
-        beginTime,
-        endTime,
-        ...params
-    }),
+    createRoster: erApiPostWithParams('/V1/rosters', ['rosterName', 'defaultStartTime', 'defaultEndTime']),
+    createRosterStation: (rosterID, stationInfo) => erApiPostWithParams(`/V1/rosters/${rosterId}/stations`, ['stationID'])(stationInfo),
+    createRosterApparatus: (rosterId, apparatusInfo) => erApiPostWithParams(`/V1/rosters/${rosterId}/apparatuses`, ['rosterStationID', 'departmentApparatusID'])(apparatusInfo),
+    createRosterPersonnel: (rosterId, personnelInfo) => erApiPostWithParams(`/V1/rosters/${rosterId}/personnel`, ['rosterApparatusID', 'rosterStationID', 'userID', 'beginTime', 'endTime'])(personnelInfo),
     deleteRoster: rosterID => erApiDelete(`/V1/rosters/${rosterID}`)
 };
