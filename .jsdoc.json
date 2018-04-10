@@ -17,12 +17,12 @@
     "monospaceLinks": false,
     "name": "er-api-js",
     "logo": {
-      "url": "../assets/logo.png",
+      "url": "./assets/logo.png",
       "width": "150px",
       "height": "36px",
       "link": "http://github.com/emergencyreporting/er-api-js"
     },
-    "css": ["../assets/jsdoc.css"],
+    "css": ["./assets/jsdoc.css"],
     "useCollapsibles": true,
     "tabNames": {
       "api": "API",

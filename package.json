@@ -8,7 +8,8 @@
   },
   "scripts": {
     "docs":
-      "./node_modules/.bin/jsdoc -c ./.jsdoc.json --readme ./README.md  --package ./package.json",
+      "./node_modules/.bin/jsdoc -c ./.jsdoc.json --readme ./README.md  --package ./package.json && cp -R ./assets ./docs/assets",
+    "docs:publish": "npm run docs && gh-pages -d ./docs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "directories": {
@@ -21,6 +22,7 @@
     "bluebird": "^3.5.1"
   },
   "devDependencies": {
+    "gh-pages": "^1.1.0",
     "jsdoc": "^3.5.5",
     "tui-jsdoc-template": "^1.2.2"
   }
