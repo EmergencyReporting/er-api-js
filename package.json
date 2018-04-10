@@ -6,11 +6,15 @@
     "type": "git",
     "url": "https://github.com/EmergencyReporting/er-api-js.git"
   },
-  "main": "index.js",
   "scripts": {
-    "docs": "open ./docs/index.html",
-    "docs:generate": "./node_modules/.bin/esdoc",
+    "docs":
+      "./node_modules/.bin/jsdoc -c ./.jsdoc.json --readme ./README.md  --package ./package.json",
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "directories": {
+    "apiv1": "lib/apiv1",
+    "apiv2": "lib/apiv2",
+    "auth": "lib/auth"
   },
   "author": "",
   "license": "MIT",
@@ -19,7 +23,7 @@
     "bluebird": "^3.5.1"
   },
   "devDependencies": {
-    "esdoc": "^1.0.4",
-    "esdoc-standard-plugin": "^1.0.0"
+    "jsdoc": "^3.5.5",
+    "tui-jsdoc-template": "^1.2.2"
   }
 }

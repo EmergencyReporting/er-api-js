@@ -1,0 +1,40 @@
+{
+  "plugins": [],
+  "readme": "./README.md",
+  "recurseDepth": 10,
+  "source": {
+    "include": ["./lib"],
+    "includePattern": ".+\\.js(doc|x)?$",
+    "excludePattern": "(^|\\/|\\\\)_"
+  },
+  "sourceType": "module",
+  "tags": {
+    "allowUnknownTags": true,
+    "dictionaries": ["jsdoc", "closure"]
+  },
+  "templates": {
+    "cleverLinks": false,
+    "monospaceLinks": false,
+    "name": "er-api-js",
+    "logo": {
+      "url": "../assets/logo.png",
+      "width": "150px",
+      "height": "36px",
+      "link": "http://github.com/emergencyreporting/er-api-js"
+    },
+    "css": ["../assets/jsdoc.css"],
+    "useCollapsibles": true,
+    "tabNames": {
+      "api": "API",
+      "tutorials": "Guides"
+    },
+    "footerText": "Emergency Reporting API Javascript Lib"
+  },
+  "opts": {
+    "template": "node_modules/tui-jsdoc-template",
+    "encoding": "utf8",
+    "destination": "./docs/",
+    "recurse": true,
+    "tutorials": "./manual"
+  }
+}
