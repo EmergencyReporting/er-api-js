@@ -1,4 +1,4 @@
-<img src="assets/logo-basic.png" alt="Emergency Reporting" style="width: 200px;"/>
+![](./assets/logo-basic.png | width=150x36)
 
 # er-api-js
 

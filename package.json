@@ -8,8 +8,10 @@
   },
   "scripts": {
     "docs":
-      "./node_modules/.bin/jsdoc -c ./.jsdoc.json --readme ./README.md  --package ./package.json && cp -R ./assets ./docs/assets",
-    "docs:publish": "npm run docs && gh-pages -d ./docs",
+      "npm run docs:clean && ./node_modules/.bin/jsdoc -c ./.jsdoc.json --readme ./README.md --package ./package.json",
+    "docs:clean":
+      "rm -rf ./docs && mkdir ./docs && cp -R ./assets ./docs/assets",
+    "docs:publish": "gh-pages -d ./docs",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "directories": {
