@@ -1,0 +1,21 @@
+h1 {
+  font-size: 22px;
+  opacity: 0.35;
+}
+
+#lnb {
+  bottom: 75px;
+}
+
+.logo {
+  vertical-align: middle;
+}
+
+footer {
+  height: 75px;
+  padding: 20px;
+}
+
+footer .logo {
+  height: 20px;
+}
