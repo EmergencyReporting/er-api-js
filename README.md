@@ -1,4 +1,4 @@
-![](./assets/logo-basic.png | width=150x36)
+![](./assets/logo-basic.png)
 
 # er-api-js
 
