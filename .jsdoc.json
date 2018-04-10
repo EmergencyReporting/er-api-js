@@ -3,7 +3,7 @@
   "readme": "./README.md",
   "recurseDepth": 10,
   "source": {
-    "include": ["./lib"],
+    "include": ["./apiv1", "./apiv2", "./auth"],
     "includePattern": ".+\\.js(doc|x)?$",
     "excludePattern": "(^|\\/|\\\\)_"
   },
