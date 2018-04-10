@@ -1,3 +1,5 @@
+<img src="assets/logo-basic.png" alt="Emergency Reporting" style="width: 200px;"/>
+
 # er-api-js
 
 Client library to interact with Emergency Reporting's public Auth and API endpoints.
