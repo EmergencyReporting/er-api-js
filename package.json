@@ -8,6 +8,8 @@
   },
   "main": "index.js",
   "scripts": {
+    "docs": "open ./docs/index.html",
+    "docs:generate": "./node_modules/.bin/esdoc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
@@ -15,5 +17,9 @@
   "dependencies": {
     "axios": "^0.18.0",
     "bluebird": "^3.5.1"
+  },
+  "devDependencies": {
+    "esdoc": "^1.0.4",
+    "esdoc-standard-plugin": "^1.0.0"
   }
 }
