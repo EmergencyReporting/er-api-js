@@ -34,7 +34,8 @@ module.exports = {
     erApiGetV1WithParams: (uriPart) => (p => getAccessToken().then(accessToken => {
         let params = p;
         let headers = {
-            Authorization: accessToken
+            Authorization: accessToken,
+            'Accept-Encoding': 'gzip'
         };
 
         if (params && params.rowVersion) {
@@ -43,7 +44,10 @@ module.exports = {
             delete params.rowVersion;
         }
 
-        return axios({url: `${getApiBaseUrl()}${uriPart}`, method: 'get', headers, params}).then(response => response.data)
+        return axios({url: `${getApiBaseUrl()}${uriPart}`, method: 'get', headers, params}).then(response => {
+            console.log(response['content-length']);
+            return response.data;
+        })
     })),
 
     erApiGetV2WithParams: (uriPart) => (params => getAccessToken().then(accessToken => axios({
