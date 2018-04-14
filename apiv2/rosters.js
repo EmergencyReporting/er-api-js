@@ -1,4 +1,4 @@
-const {erApiGetV2WithParams, erApiPostWithParams} = require('../apiutil');
+const {erApiGetV2WithParams, erApiPostWithParams, erApiDelete} = require('../apiutil');
 
 /**
  * APIv2 Rosters
@@ -7,5 +7,6 @@ const {erApiGetV2WithParams, erApiPostWithParams} = require('../apiutil');
 
 module.exports = {
   getRosters: erApiGetV2WithParams('/V2/rosters'),
-  createRoster: erApiPostWithParams('/V2/rosters', ['rosterName', 'defaultStartTime', 'defaultEndTime'])
+  createRoster: erApiPostWithParams('/V2/rosters', ['rosterName', 'defaultStartTime', 'defaultEndTime']),
+  deleteRoster: erApiDelete('/V2/rosters')
 };

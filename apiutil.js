@@ -55,9 +55,9 @@ module.exports = {
     params
   }).then(response => response.data)),
 
-  erApiDelete: uriPart => getAccessToken().then(accessToken => axios({
+  erApiDelete: uriPart => resourceID => getAccessToken().then(accessToken => axios({
     method: "delete",
-    url: `${getApiBaseUrl()}${uriPart}`,
+    url: `${getApiBaseUrl()}${uriPart}/${resourceID}`,
     headers: {
       Authorization: accessToken
     }
