@@ -1,5 +1,5 @@
 const Promise = require('bluebird');
-const {refreshAuthorization, authorizePassword, authorizationCode} = require('./authServices');
+const {refreshAuthorization, authorizePassword, authorizationCode, revokeAccessToken, revokeRefreshToken} = require('./authServices');
 const {setIfExists} = require('../utils');
 
 let authInfo = {};
@@ -32,6 +32,15 @@ const clearUserInfo = () => {
 };
 clearUserInfo();
 
+const logoutUserInfo = () => {
+    return Promise.all([
+        revokeAccessToken(authInfo.authUrl, authInfo.access_token),
+            revokeRefreshToken(authInfo.authUrl, authInfo.refresh_token)
+        ])
+        .catch(err => {})
+        .then(() => clearUserInfo());
+};
+
 const getAccessToken = () => {
     const now = Date.now();
     if (authInfo.goodUntil > now && authInfo.access_token) {
@@ -60,5 +69,6 @@ module.exports = {
     },
     getAccessToken,
     updateAuthInfo,
+    logoutUserInfo,
     clearUserInfo
 };

@@ -37,5 +37,22 @@ module.exports = {
             redirect_uri,
             code
         }
+    }).then(result => result.data),
+
+    revokeAccessToken: (baseUrl, access_token) => axios({
+        url: `${baseUrl}/Revoke.php`,
+        method: 'post',
+        data: {
+            token: access_token
+        }
+    }).then(result => result.data),
+
+    revokeRefreshToken: (baseUrl, refresh_token) => axios({
+        url: `${baseUrl}/Revoke.php`,
+        method: 'post',
+        data: {
+            token_type_hint: 'refresh_token',
+            token: refresh_token
+        }
     }).then(result => result.data)
 }
