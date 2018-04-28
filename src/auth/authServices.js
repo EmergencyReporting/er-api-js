@@ -1,10 +1,10 @@
-const axios = require('axios');
+import axios from 'axios';
 
 // defaulting timeout to 30 seconds
 axios.defaults.timeout = 30000;
 
-module.exports = {
-    refreshAuthorization: (baseUrl, refresh_token, client_id, client_secret) => axios({
+export default {
+    refreshAuthorization : (baseUrl, refresh_token, client_id, client_secret) => axios({
         url: `${baseUrl}/Token.php`,
         method: 'post',
         data: {
@@ -15,7 +15,7 @@ module.exports = {
         }
     }).then(response => response.data),
 
-    authorizePassword: (baseUrl, username, password, client_id, client_secret) => axios({
+    authorizePassword : (baseUrl, username, password, client_id, client_secret) => axios({
         url: `${baseUrl}/Token.php`,
         method: 'post',
         data: {
@@ -27,7 +27,7 @@ module.exports = {
         }
     }).then(response => response.data),
 
-    authorizationCode: (baseUrl, code, client_id, client_secret, redirect_uri) => axios({
+    authorizationCode : (baseUrl, code, client_id, client_secret, redirect_uri) => axios({
         url: `${baseUrl}/Token.php`,
         method: 'post',
         data: {
@@ -39,7 +39,7 @@ module.exports = {
         }
     }).then(result => result.data),
 
-    revokeAccessToken: (baseUrl, access_token) => axios({
+    revokeAccessToken : (baseUrl, access_token) => axios({
         url: `${baseUrl}/Revoke.php`,
         method: 'post',
         data: {
@@ -47,7 +47,7 @@ module.exports = {
         }
     }).then(result => result.data),
 
-    revokeRefreshToken: (baseUrl, refresh_token) => axios({
+    revokeRefreshToken : (baseUrl, refresh_token) => axios({
         url: `${baseUrl}/Revoke.php`,
         method: 'post',
         data: {
@@ -55,4 +55,4 @@ module.exports = {
             token: refresh_token
         }
     }).then(result => result.data)
-}
+};

@@ -3,14 +3,21 @@
   "readme": "./README.md",
   "recurseDepth": 10,
   "source": {
-    "include": ["./apiv1", "./apiv2", "./auth"],
+    "include": [
+      "./src/apiv1",
+      "./src/apiv2",
+      "./src/auth"
+    ],
     "includePattern": ".+\\.js(doc|x)?$",
     "excludePattern": "(^|\\/|\\\\)_"
   },
   "sourceType": "module",
   "tags": {
     "allowUnknownTags": true,
-    "dictionaries": ["jsdoc", "closure"]
+    "dictionaries": [
+      "jsdoc",
+      "closure"
+    ]
   },
   "templates": {
     "cleverLinks": false,
@@ -22,7 +29,9 @@
       "height": "36px",
       "link": "http://github.com/emergencyreporting/er-api-js"
     },
-    "css": ["./assets/jsdoc.css"],
+    "css": [
+      "./assets/jsdoc.css"
+    ],
     "useCollapsibles": true,
     "tabNames": {
       "api": "API",

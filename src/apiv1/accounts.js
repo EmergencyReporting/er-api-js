@@ -1,16 +1,16 @@
-const { erApiGetV1WithParams } = require("../apiutil");
+import apiutil from '../apiutil';
 
 /**
  * APIv1 Accounts
  * @module apiv1/accounts
  **/
 
-module.exports = {
+export default {
   /**
    * @function getMyAccount
    * @desc get your account
    * @return {Function} Promise
    * @param {String} uriPart endpoint path
    */
-  getMyAccount: erApiGetV1WithParams("/V1/accounts/me")
+  getMyAccount : apiutil.erApiGetV1WithParams("/V1/accounts/me")
 };

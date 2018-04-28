@@ -1,18 +1,18 @@
-const { erApiGetV1WithParams } = require("../apiutil");
+import apiutil from '../apiutil';
 
 /**
  * APIv1 Equipment
  * @module apiv1/equipment
  **/
 
-module.exports = {
+export default {
   /**
    * @function getAllEquipment
    * @desc get all equipment
    * @return {Function} Promise
    * @param {String} uriPart endpoint path
    */
-  getAllEquipment: erApiGetV1WithParams("/V1/equipment"),
+  getAllEquipment : apiutil.erApiGetV1WithParams("/V1/equipment"),
 
   /**
    * @function getAllEquipmentCategories
@@ -20,7 +20,7 @@ module.exports = {
    * @return {Function} Promise
    * @param {String} uriPart endpoint path
    */
-  getAllEquipmentCategories: erApiGetV1WithParams("/V1/equipment/categories"),
+  getAllEquipmentCategories : apiutil.erApiGetV1WithParams("/V1/equipment/categories"),
 
   /**
    * @function getAllEquipmentMaintenances
@@ -28,9 +28,7 @@ module.exports = {
    * @return {Function} Promise
    * @param {String} uriPart endpoint path
    */
-  getAllEquipmentMaintenances: erApiGetV1WithParams(
-    "/V1/equipment/maintenance"
-  ),
+  getAllEquipmentMaintenances : apiutil.erApiGetV1WithParams("/V1/equipment/maintenance"),
 
   /**
    * @function getAllEquipmentMaintenanceFiles
@@ -38,9 +36,7 @@ module.exports = {
    * @return {Function} Promise
    * @param {String} uriPart endpoint path
    */
-  getAllEquipmentMaintenanceFiles: erApiGetV1WithParams(
-    "/V1/equipment/maintenancefiles"
-  ),
+  getAllEquipmentMaintenanceFiles : apiutil.erApiGetV1WithParams("/V1/equipment/maintenancefiles"),
 
   /**
    * @function getEquipment
@@ -49,8 +45,7 @@ module.exports = {
    * @param {String} equipmentID id of equipment
    * @param {Object} params key/val object
    */
-  getEquipment: (equipmentID, params) =>
-    erApiGetV1WithParams(`/V1/equipment/${equipmentID}`)(params),
+  getEquipment : (equipmentID, params) => apiutil.erApiGetV1WithParams(`/V1/equipment/${equipmentID}`)(params),
 
   /**
    * @function getEquipmentCategory
@@ -59,10 +54,7 @@ module.exports = {
    * @param {String} equipmentID id of equipment
    * @param {Object} params key/val object
    */
-  getEquipmentCategory: (equipmentCategoryID, params) =>
-    erApiGetV1WithParams(`/V1/equipment/categories/${equipmentCategoryID}`)(
-      params
-    ),
+  getEquipmentCategory : (equipmentCategoryID, params) => apiutil.erApiGetV1WithParams(`/V1/equipment/categories/${equipmentCategoryID}`)(params),
 
   /**
    * @function getEquipmentHistory
@@ -71,8 +63,7 @@ module.exports = {
    * @param {String} equipmentID id of equipment
    * @param {Object} params key/val object
    */
-  getEquipmentHistory: (equipmentID, params) =>
-    erApiGetV1WithParams(`/V1/equipment/${equipmentID}/history`)(params),
+  getEquipmentHistory : (equipmentID, params) => apiutil.erApiGetV1WithParams(`/V1/equipment/${equipmentID}/history`)(params),
 
   /**
    * @function getEquipmentMaintenances
@@ -81,8 +72,7 @@ module.exports = {
    * @param {String} equipmentID id of equipment
    * @param {Object} params key/val object
    */
-  getEquipmentMaintenances: (equipmentID, params) =>
-    erApiGetV1WithParams(`/V1/equipment/${equipmentID}/maintenance`)(params),
+  getEquipmentMaintenances : (equipmentID, params) => apiutil.erApiGetV1WithParams(`/V1/equipment/${equipmentID}/maintenance`)(params),
 
   /**
    * @function getEquipmentMaintenance
@@ -91,10 +81,7 @@ module.exports = {
    * @param {String} equipmentID id of equipment
    * @param {Object} params key/val object
    */
-  getEquipmentMaintenance: (equipmentID, maintenanceID, params) =>
-    erApiGetV1WithParams(
-      `/V1/equipment/${equipmentID}/maintenance/${maintenanceID}`
-    )(params),
+  getEquipmentMaintenance : (equipmentID, maintenanceID, params) => apiutil.erApiGetV1WithParams(`/V1/equipment/${equipmentID}/maintenance/${maintenanceID}`)(params),
 
   /**
    * @function getEquipmentServiceHistory
@@ -103,6 +90,5 @@ module.exports = {
    * @param {String} equipmentID id of equipment
    * @param {Object} params key/val object
    */
-  getEquipmentServiceHistory: (equipmentID, params) =>
-    erApiGetV1WithParams(`/V1/equipment/${equipmentID}/servicehistory`)(params)
+  getEquipmentServiceHistory : (equipmentID, params) => apiutil.erApiGetV1WithParams(`/V1/equipment/${equipmentID}/servicehistory`)(params)
 };

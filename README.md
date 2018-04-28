@@ -20,3 +20,4 @@ Contact Emergency Reporting for API credentials needed to interact with Emergenc
 * Sample node based [command line app - cli](https://github.com/EmergencyReporting/er-api-cli)
 * [ER APIv1 Documentation](https://api.emergencyreporting.com/V1/docs/index.html)
 * [ER APIv2 Documentation](https://api.emergencyreporting.com/V2/documentation)
+* [WebPack: Authoring a library](https://webpack.js.org/guides/author-libraries/#authoring-a-library)
