@@ -26,10 +26,10 @@
   "dependencies": {},
   "devDependencies": {
     "axios": "^0.18.0",
-    "bluebird": "^3.5.1",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.4",
     "babel-preset-env": "^1.6.1",
+    "bluebird": "^3.5.1",
     "gh-pages": "^1.1.0",
     "jsdoc": "^3.5.5",
     "tui-jsdoc-template": "^1.2.2",

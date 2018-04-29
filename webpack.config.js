@@ -14,7 +14,7 @@ createConfig = (target, libraryTarget) => ({
         globalObject: 'this'
     },
     optimization: {
-        minimize: false,
+        minimize: true,
         minimizer: [new UglifyJsPlugin({sourceMap: true, uglifyOptions: {}})]
     },
     module: {
