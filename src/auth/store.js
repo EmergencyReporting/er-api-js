@@ -34,8 +34,8 @@ clearUserInfo();
 
 const logoutUserInfo = () => {
     return Promise.all([
-        revokeAccessToken(authInfo.authUrl, authInfo.access_token),
-            revokeRefreshToken(authInfo.authUrl, authInfo.refresh_token)
+        authServices.revokeAccessToken(authInfo.authUrl, authInfo.access_token),
+            authServices.revokeRefreshToken(authInfo.authUrl, authInfo.refresh_token)
         ])
         .catch(err => {})
         .then(() => clearUserInfo());

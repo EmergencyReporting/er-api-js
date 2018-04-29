@@ -1,6 +1,6 @@
 {
   "name": "@ercorp/er-api-js",
-  "version": "0.9.3",
+  "version": "0.9.4",
   "description": "Emergency Reporting Auth and API client library.",
   "repository": {
     "type": "git",
@@ -13,15 +13,23 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack"
   },
-  "main": "dist/erapijs.js",
+  "directories": {
+    "lib": "./dist"
+  },
+  "files": [
+    "dist/*"
+  ],
+  "main": "dist/erapijs.node.commonjs2.js",
   "module": "src/index.js",
   "author": "",
   "license": "MIT",
-  "dependencies": {
-    "axios": "^0.18.0",
-    "bluebird": "^3.5.1"
-  },
+  "dependencies": {},
   "devDependencies": {
+    "axios": "^0.18.0",
+    "bluebird": "^3.5.1",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.6.1",
     "gh-pages": "^1.1.0",
     "jsdoc": "^3.5.5",
     "tui-jsdoc-template": "^1.2.2",
