@@ -1,6 +1,6 @@
 {
   "name": "@ercorp/er-api-js",
-  "version": "0.9.4",
+  "version": "1.0.0",
   "description": "Emergency Reporting Auth and API client library.",
   "repository": {
     "type": "git",
@@ -8,10 +8,13 @@
   },
   "scripts": {
     "docs": "npm run docs:clean && ./node_modules/.bin/jsdoc -c ./.jsdoc.json --readme ./README.md --package ./package.json",
-    "docs:clean": "rm -rf ./docs && mkdir ./docs && cp -R ./assets ./docs/assets",
-    "docs:publish": "gh-pages -d ./docs",
+    "docs:clean": "rimraf ./docs",
+    "docs:publish": "mkdir .\\docs\\assets && copy .\\assets .\\docs\\assets && gh-pages -d ./docs",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack"
+    "build": "webpack",
+    "build:clean": "rimraf ./dist",
+    "build:publish": "mkdir .\\docs\\",
+    "clean": "npm run build:clean && npm run docs:clean"
   },
   "directories": {
     "lib": "./dist"
